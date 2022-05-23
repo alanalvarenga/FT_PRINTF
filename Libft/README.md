@@ -1,2 +1,0 @@
-# Libft
-Libft and bonus

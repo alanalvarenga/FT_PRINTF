@@ -3,7 +3,7 @@ LIBFT_PATH = ./Libft
 LIBFT = $(LIBFT_PATH)/libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-FILES = ft_printf.c
+FILES = ft_printf.c ft_printf_utils.c
 OBJECTS = $(FILES:.c=.o)
 RM = rm -f
 
