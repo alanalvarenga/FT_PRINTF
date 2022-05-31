@@ -27,13 +27,11 @@ $(NAME): $(OBJECTS)
 $(PATH_SRC)%.o: $(PATH_SRC)%.c
 		@ $(CC) $(CFLAGS) -c $< -o $@
 
-#	make OBJECTS="$(OBJECTS_BONUS)"
-$(NAME_BONUS): $(OBJECTS_BONUS) $(INCLUDE_BONUS)
+$(NAME_BONUS): $(OBJECTS_BONUS) 
 		@ make -C $(LIBFT_PATH)
 		@ cp $(LIBFT) $(NAME_BONUS)
 		@ mv $(LIBFT) $(NAME_BONUS)
-#		@ cp $(NAME_BONUS) $(NAME)
-		@ ar -rcs $(NAME_BONUS) $(OBJS_BONUS)
+		@ ar -rcs $(NAME_BONUS) $(OBJECTS_BONUS) $(INCLUDE_BONUS)
 
 $(PATH_SRC_BONUS)%.o: $(PATH_SRC_BONUS)%.c
 		@ $(CC) $(CFLAGS) -c $< -o $@

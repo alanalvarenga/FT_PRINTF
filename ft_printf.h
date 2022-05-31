@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 22:25:08 by alachris          #+#    #+#             */
-/*   Updated: 2022/05/26 22:09:13 by alachris         ###   ########.fr       */
+/*   Updated: 2022/05/31 03:15:28 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct s_vari
 {
 	int	amount;
 	int	i;
-	int	del;
 }					t_vari;
 
 typedef struct s_types
