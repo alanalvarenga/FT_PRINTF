@@ -15,16 +15,16 @@ RM = rm -f
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar -rcs $(NAME) $(OBJECTS)
+	@ ar -rcs $(NAME) $(OBJECTS)
 
 $(OBJECTS): $(FILES)
-	$(CC) $(CFLAGS) -c $(FILES)
+	@ $(CC) $(CFLAGS) -c $(FILES)
 
 clean:
-	$(RM) $(OBJECTS)
+	@ $(RM) $(OBJECTS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@ $(RM) $(NAME)
 
 re: fclean all
 
