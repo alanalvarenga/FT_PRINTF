@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:24:21 by alachris          #+#    #+#             */
-/*   Updated: 2022/05/31 02:25:10 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/01 21:54:29 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct s_vari
 {
 	int	amount;
 	int	i;
-	int	del;
 }					t_vari;
 
 typedef struct s_types
@@ -32,6 +31,17 @@ typedef struct s_types
 	unsigned long	unsi_long;
 }					t_types;
 
+typedef struct s_flags
+{
+	int	space;
+	int	negative;
+	int	zero;
+	int	point;
+	int	sharp;
+	int	width;
+	int	positive;
+}				t_flags;
+
 int		ft_printf(const char *str, ...);
 void	count_numbers(t_vari **vari, int integer);
 void	ft_putnbr_unsi_fd(unsigned int n, int fd);
@@ -42,5 +52,10 @@ void	ft_percent_p(t_vari **vari, va_list print);
 void	no_flags2(const char *str, t_vari **vari, va_list print);
 void	no_flags(const char *str, t_vari **vari, va_list print);
 void	verify(const char *str, t_vari *vari, va_list print);
+void	is_flag(const char *str, t_vari **vari, va_list print);
+void	flag_space(const char *str, t_vari **vari, va_list print);
+void	space_continue(const char *str, t_vari **vari, va_list print);
+void	using_flags(const char *str, t_vari **vari, va_list print, t_flags *flags);
+void	flag_negative(const char *str, t_vari **vari, va_list print);
 
 #endif

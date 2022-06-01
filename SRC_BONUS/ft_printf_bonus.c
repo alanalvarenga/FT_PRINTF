@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:26:26 by alachris          #+#    #+#             */
-/*   Updated: 2022/05/31 01:38:22 by alachris         ###   ########.fr       */
+/*   Updated: 2022/05/31 22:47:00 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	no_flags2(const char *str, t_vari **vari, va_list print)
 	else
 	{
 		write (1, "%", 1);
+		(*vari)->amount++;
 		(*vari)->i--;
 	}
 }
@@ -97,7 +98,9 @@ void	verify(const char *str, t_vari *vari, va_list print)
 		write (1, "%", 1);
 		vari->i++;
 		vari->amount++;
-	}	
+	}
+	else
+		is_flag(str, &vari, print);
 }
 
 int	ft_printf(const char *str, ...)
