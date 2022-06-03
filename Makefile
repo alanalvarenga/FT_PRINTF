@@ -11,7 +11,7 @@ PATH_SRC_BONUS = ./SRC_BONUS/
 FILES = $(PATH_SRC)ft_printf.c $(PATH_SRC)ft_printf_utils.c
 OBJECTS = $(FILES:.c=.o)
 FILES_BONUS = $(PATH_SRC_BONUS)ft_printf_bonus.c $(PATH_SRC_BONUS)ft_printf_utils_bonus.c \
-			  $(PATH_SRC_BONUS)ft_flags_bonus.c $(PATH_SRC_BONUS)flag_space.c $(PATH_SRC_BONUS)flag_negative.c \
+			  $(PATH_SRC_BONUS)ft_flags_bonus.c $(PATH_SRC_BONUS)flag_space.c $(PATH_SRC_BONUS)flag_negative.c
 OBJECTS_BONUS = $(FILES_BONUS:.c=.o)
 RM = rm -f
 
@@ -51,7 +51,7 @@ testm:
 	$(CC) main.c $(NAME) && ./a.out
 
 testb:
-	cc main2.c $(CFLAGS) $(NAME_BONUS) && ./a.out
+	cc main2.c -g3 $(CFLAGS) $(NAME_BONUS) && ./a.out
 
 .PHONY: all clean fclean re
 

@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:24:21 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/01 21:54:29 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/03 04:11:19 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,16 @@
 
 # include <stdarg.h>
 # include "./Libft/libft.h"
+#include <stdio.h>
 
 typedef struct s_vari
 {
 	int	amount;
 	int	i;
+	int	n;
+	int	amount_current;
+	int	min;
+	int aux;
 }					t_vari;
 
 typedef struct s_types
@@ -36,7 +41,7 @@ typedef struct s_flags
 	int	space;
 	int	negative;
 	int	zero;
-	int	point;
+	int	dot;
 	int	sharp;
 	int	width;
 	int	positive;
@@ -56,6 +61,10 @@ void	is_flag(const char *str, t_vari **vari, va_list print);
 void	flag_space(const char *str, t_vari **vari, va_list print);
 void	space_continue(const char *str, t_vari **vari, va_list print);
 void	using_flags(const char *str, t_vari **vari, va_list print, t_flags *flags);
-void	flag_negative(const char *str, t_vari **vari, va_list print);
+void	flag_negative(const char *str, t_vari **vari, va_list print, t_flags **flags);
+void	negative_continue(const char *str, t_vari **vari, va_list print, t_flags **flags);
+void	print_numb_neg_space(t_vari **vari, va_list print);
+void	negative_continue2(const char *str, t_vari **vari, va_list print, t_flags **flags);
+void	negative_continue3(const char *str, t_vari **vari, va_list print);
 
 #endif
