@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 03:18:41 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/05 02:04:06 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/05 02:20:36 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	using_flags(const char *str, t_vari **vari, va_list print, t_flags *flags)
 		flag_negative(str, vari, print, &flags);
 	else if (flags->negative == 0 && flags->zero == 1)
 	 	flag_zero(str, vari, print);
-	else if (flags->space == 1)
+	else if ((flags->negative == 0) && (flags->zero == 0) && (flags->space == 1))
 	 	flag_space(str, vari, print);
 	ft_bzero(&flags, sizeof(t_flags));
 }

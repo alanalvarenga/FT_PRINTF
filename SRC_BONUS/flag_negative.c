@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 21:22:26 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/03 22:52:17 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/05 02:33:55 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	negative_continue2(const char *str, t_vari **vari,
 			(*vari)->n++;
 		}
 	}	
-	if (str[(*vari)->i + (*vari)->n] == '-')
+	if ((str[(*vari)->i + (*vari)->n] == '-') && (str[(*vari)->i + (*vari)->n + 1] == ' '))
 	{
 		(*vari)->n++;
 		while (str[(*vari)->i + (*vari)->n] == ' ')
