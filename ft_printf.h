@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 22:25:08 by alachris          #+#    #+#             */
-/*   Updated: 2022/05/31 03:15:28 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/04 23:00:23 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct s_vari
 {
 	int	amount;
 	int	i;
-}					t_vari;
+}	t_vari;
 
 typedef struct s_types
 {
@@ -29,7 +29,7 @@ typedef struct s_types
 	int				integer;
 	unsigned int	unsi_int;	
 	unsigned long	unsi_long;
-}					t_types;
+}	t_types;
 
 int		ft_printf(const char *str, ...);
 void	count_numbers(t_vari **vari, int integer);

@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 21:22:26 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/03 04:09:38 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/03 22:52:17 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,38 +38,37 @@ void	negative_continue3(const char *str, t_vari **vari, va_list print)
 	(*vari)->i++;
 }
 
-void	negative_continue2(const char *str, t_vari **vari, va_list print, t_flags **flags)
-{
-	t_types	types;
-
-	ft_bzero(&types, sizeof(t_types));
+void	negative_continue2(const char *str, t_vari **vari,
+						va_list print, t_flags **flags)
+{	
+	(*vari)->n = 0;
 	if (str[(*vari)->i] == ' ')
 	{
-		(*vari)->n = 0;
 		while (str[(*vari)->i + (*vari)->n] == ' ')
 		{
 			(*vari)->n++;
 		}
-		if (str[(*vari)->i + (*vari)->n] == '-')
+	}	
+	if (str[(*vari)->i + (*vari)->n] == '-')
+	{
+		(*vari)->n++;
+		while (str[(*vari)->i + (*vari)->n] == ' ')
 		{
 			(*vari)->n++;
-			while (str[(*vari)->i + (*vari)->n] == ' ')
-			{
-				(*vari)->n++;
-			}
-		}
-		(*vari)->i = (*vari)->i + (*vari)->n-2;
+		}	
+		(*vari)->i = (*vari)->i + (*vari)->n - 2;
 		(*flags)->negative = 2;
 		negative_continue(str, vari, print, flags);
-	}	
+	}		
 	else
 		negative_continue3(str, vari, print);
 }
 
-void	negative_continue(const char *str, t_vari **vari, va_list print, t_flags **flags)
+void	negative_continue(const char *str, t_vari **vari,
+					va_list print, t_flags **flags)
 {
 	if (((str[(*vari)->i] == ' ') && (str[(*vari)->i + 1] == '-')
-		&& (str[(*vari)->i + 2] != ' ')) || ((*flags)->negative == 2))
+			&& (str[(*vari)->i + 2] != ' ')) || ((*flags)->negative == 2))
 	{
 		(*vari)->i++;
 		(*vari)->n = 1;
@@ -95,11 +94,12 @@ void	negative_continue(const char *str, t_vari **vari, va_list print, t_flags **
 		negative_continue2(str, vari, print, flags);
 }
 
-void	flag_negative(const char *str, t_vari **vari, va_list print, t_flags **flags)
+void	flag_negative(const char *str, t_vari **vari,
+			va_list print, t_flags **flags)
 {	
 	(*vari)->amount_current = (*vari)->amount;
-	if ((str[(*vari)->i - 1] != ' ') && (str[(*vari)->i] == '-')
-		&& (str[(*vari)->i + 1] == ' '))
+	if ((str[(*vari)->i - 1] == '%') && (str[(*vari)->i] == '-')
+		&& (str[(*vari)->i + 1] == ' ') && (str[(*vari)->i + 2] != ' '))
 	{
 		(*vari)->n = 2;
 		while (!ft_isalpha(str[(*vari)->i + (*vari)->n]))
