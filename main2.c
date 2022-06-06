@@ -14,8 +14,10 @@ int main()
 	int count1 = 0;
 	int count2 = 0;
 	//printf(" |%c %i %s|\n",ch,i,str);
-	count1 = ft_printf("|%06i|%-8d|%-5s|%%|% i|\n",-856,98,"tes",45);	
-	count2 = printf("|%06i|%-8d|%-5s|%%|% i|\n",-856,98,"tes",45);
+	//count1 = ft_printf("|%06i|%-8d|%-5s|%%|% i|\n",-856,98,"tes",45);	
+	//count2 = printf("|%06i|%-8d|%-5s|%%|% i|\n",-856,98,"tes",45);
+	count1 = ft_printf("|%6s|\n",132);	
+	count2 = printf("|%6s|\n","te");
 	printf("Quantidade meu: |%i| , original: |%i|\n",count1,count2);
 	return (0);
 }

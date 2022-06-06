@@ -6,23 +6,48 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 03:18:41 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/05 02:20:36 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/07 01:13:14 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf_bonus.h"
 
+void	flag_positive(const char *str, t_vari **vari, va_list print)
+{
+	t_types	types;
+
+	ft_bzero(&types, sizeof(t_types));
+	(*vari)->i++;
+	if (str[(*vari)->i] == 'i' || str[(*vari)->i] == 'd')
+	{
+		types.integer = va_arg(print,int);
+		if (types.integer >= 0)
+		{
+			write(1, "+", 1);
+			(*vari)->amount++;
+		}
+		ft_putnbr_fd(types.integer, 1);
+		count_numbers(vari, types.integer);
+		(*vari)->i++;
+	}
+}
 void	using_flags(const char *str, t_vari **vari, va_list print, t_flags *flags)
 {
 	(*vari)->min = 0;
 	(*vari)->n = 0;
-	//(*vari)->numbers = 0;
-	if (flags->negative == 1)
+	(*vari)->numbers = 0;
+	if ((flags->space == 0) && (flags->sharp == 1))
+		flag_sharp(str, vari, print, &flags);
+	else if (flags->negative == 1)
 		flag_negative(str, vari, print, &flags);
 	else if (flags->negative == 0 && flags->zero == 1)
-	 	flag_zero(str, vari, print);
+	 	flag_zero(str, vari, print, &flags);
+	else if ((flags->negative == 0) && (flags->zero == 0) && (flags->width == 1))
+		flag_width(str, vari, print, &flags);
 	else if ((flags->negative == 0) && (flags->zero == 0) && (flags->space == 1))
 	 	flag_space(str, vari, print);
+	else if (flags->positive == 1)
+		flag_positive(str, vari, print);
 	ft_bzero(&flags, sizeof(t_flags));
 }
 
@@ -30,13 +55,9 @@ void	is_flag(const char *str, t_vari **vari, va_list print)
 {
 	t_flags	flags;
 
-	//printf("TESTANDO");
 	ft_bzero(&flags, sizeof(t_flags));
 	(*vari)->n = 0;
 	while (!ft_isalpha(str[(*vari)->i + (*vari)->n])) 
-		// || (flags.negative == 0) || (flags.zero == 0)
-		// || (flags.space == 0) || (flags.sharp == 0)
-		// || (flags.positive == 0))
 	{
 		if (str[(*vari)->i + (*vari)->n] == '-')
 			flags.negative = 1;
@@ -48,8 +69,9 @@ void	is_flag(const char *str, t_vari **vari, va_list print)
 			flags.sharp = 1;
 		else if (str[(*vari)->i + (*vari)->n] == '+')
 			flags.positive = 1;
-		// else if (str[(*vari)->i + (*vari)->n] == ft_isdigit(str[(*vari)->i + (*vari)->n]))
-		// 	flags.width = 1;
+		else if (((ft_isdigit(str[(*vari)->i + (*vari)->n])) > 0) 
+			&& (str[(*vari)->i + (*vari)->n] != '0'))
+		 	flags.width = 1;
 		// else if (str[(*vari)->i + (*vari)->n] == '.')
 		// 	flags.dot = 1;
 		(*vari)->n++;

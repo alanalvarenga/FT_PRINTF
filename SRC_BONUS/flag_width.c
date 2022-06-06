@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag_zero.c                                        :+:      :+:    :+:   */
+/*   flag_width.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/03 22:10:51 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/06 22:54:52 by alachris         ###   ########.fr       */
+/*   Created: 2022/06/07 01:04:27 by alachris          #+#    #+#             */
+/*   Updated: 2022/06/07 01:22:53 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf_bonus.h"
 
-void	count_min_zero_neg(const char *str, t_vari **vari)
-{
-	while (!ft_isalpha(str[(*vari)->i + (*vari)->n]))
-	{
-		if (str[(*vari)->i + (*vari)->n] != ' ')
-		(*vari)->min = ((*vari)->min * 10)
-			+ (str[(*vari)->i + (*vari)->n] - 48);
-		(*vari)->n++;
-	}
-}
-
-void	count_digits(const char *str, t_vari **vari,
+void	count_digits_width(const char *str, t_vari **vari,
 	va_list print, t_types *types)
 {			
 	(*vari)->is_negative = 0;
 	if (str[(*vari)->i] == 'i' || str[(*vari)->i] == 'd')
 	{
 		types->integer = va_arg(print, int);
-		count_int(vari, types->integer);
-		if ((str[(*vari)->i - (*vari)->n] == ' ')
-			|| (str[(*vari)->i - (*vari)->n] == '+'))
-		{
-			if ((*vari)->is_negative == 1)
-				write(1, "-", 1);
-		}		
+		count_int(vari, types->integer);			
 	}
 	else if (str[(*vari)->i] == 'u')
 	{
@@ -50,21 +33,21 @@ void	count_digits(const char *str, t_vari **vari,
 	}
 }
 
-void	flag_zero_continue(const char *str, t_vari **vari, t_types *types)
+void	flag_width_continue(const char *str, t_vari **vari, t_types *types)
 {
 	(*vari)->aux = (*vari)->min - (*vari)->numbers;	
 	if ((*vari)->aux > 0)
 	{
 		while ((*vari)->aux > 0)
 		{
-			write(1, "0", 1);
+			write(1, " ", 1);
 			(*vari)->aux--;
 			(*vari)->amount++;
 		}
 	}
 	if (str[(*vari)->i] == 'i' || str[(*vari)->i] == 'd')
 	{		
-		print_id(types->integer);
+		ft_putnbr_fd(types->integer, 1);
 		count_numbers(vari, types->integer);
 	}
 	else if ((str[(*vari)->i] == 'x') || (str[(*vari)->i] == 'X'))
@@ -79,7 +62,7 @@ void	flag_zero_continue(const char *str, t_vari **vari, t_types *types)
 	(*vari)->i++;
 }
 
-void	flag_zero(const char *str, t_vari **vari,
+void	flag_width(const char *str, t_vari **vari,
 			va_list print, t_flags **flags)
 {	
 	t_types	types;
@@ -90,7 +73,7 @@ void	flag_zero(const char *str, t_vari **vari,
 		(*vari)->n = 1;
 	count_min_zero_neg(str, vari);
 	(*vari)->i = (*vari)->i + (*vari)->n;
-	count_digits(str, vari, print, &types);
+	count_digits_width(str, vari, print, &types);
 	if ((str[(*vari)->i - (*vari)->n] == ' ')
 		|| (str[(*vari)->i - (*vari)->n] == '+'))
 	{
@@ -104,7 +87,7 @@ void	flag_zero(const char *str, t_vari **vari,
 			(*vari)->amount++;
 		}
 	}
-	else if (types.integer < 0)
-		write(1, "-", 1);
-	flag_zero_continue(str, vari, &types);
+	// else if (types.integer < 0)
+	// 	write(1, "-", 1);
+	flag_width_continue(str, vari, &types);
 }

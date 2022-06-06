@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:24:21 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/05 01:00:16 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/07 01:22:07 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,10 @@ void	negative_continue(const char *str, t_vari **vari,
 void	print_numb_neg_space(t_vari **vari, va_list print);
 void	negative_continue2(const char *str, t_vari **vari,
 			va_list print, t_flags **flags);
-void	negative_continue3(const char *str, t_vari **vari, va_list print);
-void	flag_zero(const char *str, t_vari **vari, va_list print);
+void	negative_continue3(const char *str, t_vari **vari,
+			va_list print, t_flags **flags);
+void	flag_zero(const char *str, t_vari **vari,
+			va_list print, t_flags **flags);
 void	count_digits(const char *str, t_vari **vari,
 			va_list print, t_types *types);
 void	count_int(t_vari **vari, int integer);
@@ -80,5 +82,14 @@ void	count_unsi(t_vari **vari, unsigned int unsi_int);
 void	count_hexa(unsigned long n, t_vari **vari);
 void	flag_zero_continue(const char *str, t_vari **vari, t_types *types);
 void	print_id(int n);
+void	flag_sharp(const char *str, t_vari **vari,
+			va_list print, t_flags **flags);
+void	count_min_zero_neg(const char *str, t_vari **vari);
+void	flag_positive(const char *str, t_vari **vari, va_list print);
+void	flag_width(const char *str, t_vari **vari,
+			va_list print, t_flags **flags);
+void	flag_width_continue(const char *str, t_vari **vari, t_types *types);
+void	count_digits_width(const char *str, t_vari **vari,
+			va_list print, t_types *types);
 
 #endif
