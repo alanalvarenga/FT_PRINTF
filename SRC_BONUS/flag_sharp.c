@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:08:52 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/06 22:30:11 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/07 22:57:37 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 void	flag_sharp(const char *str, t_vari **vari,
 			va_list print, t_flags **flags)
 {
+	t_types	types;
+
+	ft_bzero(&types, sizeof(t_types));
 	(*vari)->i++;
-	write(1, "0x", 2);
-	(*vari)->amount = (*vari)->amount + 2;
 	if (str[(*vari)->i] == '-')
-	{
 		flag_negative(str, vari, print, flags);
-	}
 	else if (str[(*vari)->i] == '0')
 	{
 		(*vari)->numbers = +2;
@@ -29,7 +28,9 @@ void	flag_sharp(const char *str, t_vari **vari,
 	}
 	else
 	{
-		no_flags2(str, vari, print);
+		types.unsi_int = va_arg(print, unsigned int);
+		ft_puthexa(types.unsi_int, str[(*vari)->i], vari, *flags);
+		ft_free_null(&(*vari)->hextab);
 		(*vari)->i++;
-	}	
+	}
 }

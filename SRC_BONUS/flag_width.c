@@ -6,14 +6,35 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 01:04:27 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/07 01:22:53 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/08 02:07:33 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf_bonus.h"
 
+void	count_dig_wid_sp(const char *str, t_vari **vari,
+			va_list print, t_types *types)
+{
+	if (str[(*vari)->i] == 's')
+	{
+		types->string = va_arg(print, char *);
+		(*vari)->numbers = (*vari)->numbers + ft_strlen(types->string);
+	}
+	else if (str[(*vari)->i] == 'c')
+	{
+		types->character = va_arg(print, int);
+		(*vari)->numbers++;
+	}
+	else if (str[(*vari)->i] == 'p')
+	{
+		types->unsi_long = va_arg(print, unsigned long);
+		(*vari)->numbers = (*vari)->numbers + 2;
+		count_hexa(types->unsi_int, vari);		
+	}
+}
+
 void	count_digits_width(const char *str, t_vari **vari,
-	va_list print, t_types *types)
+			va_list print, t_types *types)
 {			
 	(*vari)->is_negative = 0;
 	if (str[(*vari)->i] == 'i' || str[(*vari)->i] == 'd')
@@ -31,10 +52,35 @@ void	count_digits_width(const char *str, t_vari **vari,
 		types->unsi_int = va_arg(print, unsigned int);
 		count_hexa(types->unsi_int, vari);
 	}
+	else
+		count_dig_wid_sp(str, vari, print, types);
+}
+void	flag_width_continue2(const char *str, t_vari **vari,
+			va_list print, t_types *types)
+{	
+	if (str[(*vari)->i] == 's')
+	{
+		if (!types->string)
+			types->string = "(null)";
+		ft_putstr_fd(types->string, 1);
+		(*vari)->amount = (*vari)->amount + ft_strlen(types->string);
+	}
+	else if (str[(*vari)->i] == 'c')
+	{
+		ft_putchar_fd(types->character, 1);
+		(*vari)->amount++;
+	}
+	else if (str[(*vari)->i] == 'p')
+	{
+		ft_percent_p(vari, print);		
+	}	
 }
 
-void	flag_width_continue(const char *str, t_vari **vari, t_types *types)
+void	flag_width_continue(const char *str, t_vari **vari,
+			t_types *types, t_flags **flags)
 {
+	printf("valor min  >%d<\n",(*vari)->min);
+	printf("valor numb  >%d<\n",(*vari)->numbers);
 	(*vari)->aux = (*vari)->min - (*vari)->numbers;	
 	if ((*vari)->aux > 0)
 	{
@@ -52,14 +98,14 @@ void	flag_width_continue(const char *str, t_vari **vari, t_types *types)
 	}
 	else if ((str[(*vari)->i] == 'x') || (str[(*vari)->i] == 'X'))
 	{
-		ft_puthexa(types->unsi_int, str[(*vari)->i], vari);
+		ft_puthexa(types->unsi_int, str[(*vari)->i], vari, *flags);
+		ft_free_null(&(*vari)->hextab);
 	}
 	else if (str[(*vari)->i] == 'u')
 	{
 		ft_putnbr_unsi_fd(types->unsi_int, 1);
 		count_unsi_numbers(vari, types->unsi_int);
-	}
-	(*vari)->i++;
+	}	
 }
 
 void	flag_width(const char *str, t_vari **vari,
@@ -87,7 +133,6 @@ void	flag_width(const char *str, t_vari **vari,
 			(*vari)->amount++;
 		}
 	}
-	// else if (types.integer < 0)
-	// 	write(1, "-", 1);
-	flag_width_continue(str, vari, &types);
+	flag_width_continue(str, vari, &types, flags);
+	flag_width_continue2(str, vari, print, &types);
 }

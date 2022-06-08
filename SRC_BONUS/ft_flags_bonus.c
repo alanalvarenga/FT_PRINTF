@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 03:18:41 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/07 01:13:14 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/08 01:52:10 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,15 @@ void	using_flags(const char *str, t_vari **vari, va_list print, t_flags *flags)
 	else if (flags->negative == 1)
 		flag_negative(str, vari, print, &flags);
 	else if (flags->negative == 0 && flags->zero == 1)
+	{
 	 	flag_zero(str, vari, print, &flags);
+		(*vari)->i++;
+	}
 	else if ((flags->negative == 0) && (flags->zero == 0) && (flags->width == 1))
+	{
 		flag_width(str, vari, print, &flags);
+		(*vari)->i++;
+	}
 	else if ((flags->negative == 0) && (flags->zero == 0) && (flags->space == 1))
 	 	flag_space(str, vari, print);
 	else if (flags->positive == 1)
@@ -57,7 +63,9 @@ void	is_flag(const char *str, t_vari **vari, va_list print)
 
 	ft_bzero(&flags, sizeof(t_flags));
 	(*vari)->n = 0;
-	while (!ft_isalpha(str[(*vari)->i + (*vari)->n])) 
+	while (!ft_isalpha(str[(*vari)->i + (*vari)->n])
+			&& (flags.negative == 0) && (flags.zero == 0)
+			&& (flags.sharp == 0) && (flags.width == 0))
 	{
 		if (str[(*vari)->i + (*vari)->n] == '-')
 			flags.negative = 1;

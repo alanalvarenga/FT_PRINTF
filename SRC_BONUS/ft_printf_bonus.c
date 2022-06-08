@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:26:26 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/03 04:47:09 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/08 01:13:42 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_percent_p(t_vari **vari, va_list print)
 	{
 		write(1, "0x", 2);
 		ft_puthexa_point(types.unsi_long, vari);
+		ft_free_null(&(*vari)->hextab);
 		(*vari)->amount = (*vari)->amount + 2;
 	}
 }
@@ -34,7 +35,9 @@ void	ft_percent_p(t_vari **vari, va_list print)
 void	no_flags2(const char *str, t_vari **vari, va_list print)
 {
 	t_types	types;
+	t_flags	flags;
 
+	ft_bzero(&flags, sizeof(t_flags));
 	ft_bzero(&types, sizeof(t_types));
 	if (str[(*vari)->i] == 'u')
 	{
@@ -45,7 +48,8 @@ void	no_flags2(const char *str, t_vari **vari, va_list print)
 	else if ((str[(*vari)->i] == 'x') || (str[(*vari)->i] == 'X'))
 	{
 		types.unsi_int = va_arg(print, unsigned int);
-		ft_puthexa(types.unsi_int, str[(*vari)->i], vari);
+		ft_puthexa(types.unsi_int, str[(*vari)->i], vari, &flags);
+		ft_free_null(&(*vari)->hextab);
 	}
 	else if (str[(*vari)->i] == 'p')
 		ft_percent_p(vari, print);

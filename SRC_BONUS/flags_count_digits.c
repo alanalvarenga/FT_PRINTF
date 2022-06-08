@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 23:03:58 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/05 00:59:48 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/08 02:01:06 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ void	count_unsi(t_vari **vari, unsigned int unsi_int)
 	(*vari)->numbers = (*vari)->numbers + size;
 }
 
-void	count_hexa(unsigned long n, t_vari **vari)
+void	count_hexa(size_t n, t_vari **vari)
 {
 	if (n < 16)
 	{		
-		(*vari)->numbers++;
+		(*vari)->numbers += 1;
 	}
 	else
 	{
 		count_hexa(n / 16, vari);
-		(*vari)->numbers++;
+		(*vari)->numbers += 1;
 	}
 }

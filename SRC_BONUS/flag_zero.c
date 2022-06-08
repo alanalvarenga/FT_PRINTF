@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:10:51 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/06 22:54:52 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/07 22:59:21 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	count_digits(const char *str, t_vari **vari,
 	}
 }
 
-void	flag_zero_continue(const char *str, t_vari **vari, t_types *types)
+void	flag_zero_continue(const char *str, t_vari **vari,
+			t_types *types, t_flags **flags)
 {
 	(*vari)->aux = (*vari)->min - (*vari)->numbers;	
 	if ((*vari)->aux > 0)
@@ -69,14 +70,14 @@ void	flag_zero_continue(const char *str, t_vari **vari, t_types *types)
 	}
 	else if ((str[(*vari)->i] == 'x') || (str[(*vari)->i] == 'X'))
 	{
-		ft_puthexa(types->unsi_int, str[(*vari)->i], vari);
+		ft_puthexa(types->unsi_int, str[(*vari)->i], vari, *flags);
+		ft_free_null(&(*vari)->hextab);
 	}
 	else if (str[(*vari)->i] == 'u')
 	{
 		ft_putnbr_unsi_fd(types->unsi_int, 1);
 		count_unsi_numbers(vari, types->unsi_int);
 	}
-	(*vari)->i++;
 }
 
 void	flag_zero(const char *str, t_vari **vari,
@@ -106,5 +107,5 @@ void	flag_zero(const char *str, t_vari **vari,
 	}
 	else if (types.integer < 0)
 		write(1, "-", 1);
-	flag_zero_continue(str, vari, &types);
+	flag_zero_continue(str, vari, &types, flags);
 }
