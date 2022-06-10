@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 21:41:11 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/09 20:27:26 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:42:41 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	flag_space(const char *str, t_vari **vari, va_list print)
 	t_types	types;
 
 	ft_bzero(&types, sizeof(t_types));
-	check_spaces(str, vari);		
+	check_spaces(str, vari);
 	if ((str[(*vari)->i] == 'i') || (str[(*vari)->i] == 'd'))
 	{
 		types.integer = va_arg(print, int);

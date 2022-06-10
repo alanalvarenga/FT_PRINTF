@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 22:25:08 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/10 23:20:34 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:47:35 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ void	ft_percent_p(t_vari **vari, va_list print);
 void	no_flags2(const char *str, t_vari **vari, va_list print);
 void	no_flags(const char *str, t_vari **vari, va_list print);
 void	verify(const char *str, t_vari *vari, va_list print);
+void	ft_free_null(char **ptr);
 
 #endif

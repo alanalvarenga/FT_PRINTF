@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:24:21 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/10 23:02:04 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:45:50 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 
 typedef struct s_vari
 {
-	int	amount;
-	int	i;
-	int	n;
-	int	amount_current;
-	int	min;
-	int	aux;
-	int	numbers;
-	int	is_negative;
+	int		amount;
+	int		i;
+	int		n;
+	int		amount_current;
+	int		min;
+	int		aux;
+	int		numbers;
+	int		is_negative;
 	char	*hextab;
-	int	min_width;
-	int	have_dot;
+	int		min_width;
+	int		have_dot;
 }	t_vari;
 
 typedef struct s_types

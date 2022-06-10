@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 21:08:52 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/10 23:08:57 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:36:12 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	flag_sharp(const char *str, t_vari **vari,
 			va_list print, t_flags **flags)
 {
 	t_types	types;
-	
+
 	ft_bzero(&types, sizeof(t_types));
 	if ((str[(*vari)->i] != 'x') && (str[(*vari)->i] != 'X'))
 		(*vari)->i++;

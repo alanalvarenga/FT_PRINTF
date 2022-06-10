@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 21:48:06 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/10 23:07:15 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:39:39 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	do_dot(const char *str, t_vari **vari,
 	if (str[(*vari)->i] == 's')
 	{
 		types.string = va_arg(print, char *);
-		if(!types.string)
+		if (!types.string)
 			putstr_dot(vari, types.string);
 		else if (((int)ft_strlen(types.string)) > ((*vari)->min))
 			putstr_dot(vari, types.string);
@@ -64,12 +64,12 @@ void	do_dot_sharp(const char *str, t_vari **vari,
 			va_list print, t_flags *flags)
 {
 	if (((str[(*vari)->i] == 'x')) && (flags->sharp == 1))
-		write(1, "0x", 2);		
+		write(1, "0x", 2);
 	else if (((str[(*vari)->i] == 'X')) && (flags->sharp == 1))
-		write(1, "0X", 2);	
+		write(1, "0X", 2);
 	if (flags->sharp == 1)
 		(*vari)->amount = (*vari)->amount + 2;
-	putx_dot(str, vari, print, flags);	
+	putx_dot(str, vari, print, flags);
 }
 
 void	dot_comb_id(const char *str, t_vari **vari,
@@ -79,7 +79,7 @@ void	dot_comb_id(const char *str, t_vari **vari,
 
 	ft_bzero(&types, sizeof(t_types));
 	types.integer = va_arg(print, int);
-	if ((types.integer >= 0) && ((*flags)->positive == 1))	
+	if ((types.integer >= 0) && ((*flags)->positive == 1))
 		write(1, "+", 1);
 	else if (types.integer < 0)
 		write(1, "-0", 2);
@@ -99,7 +99,7 @@ void	flag_dot(const char *str, t_vari **vari,
 {
 	t_types	types;
 
-	ft_bzero(&types, sizeof(t_types));	
+	ft_bzero(&types, sizeof(t_types));
 	if ((str[(*vari)->i] == ' ') || (str[(*vari)->i] == '+'))
 	{
 		dot_comb_id(str, vari, print, flags);

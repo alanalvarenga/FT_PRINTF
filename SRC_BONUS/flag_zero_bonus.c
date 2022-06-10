@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 22:10:51 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/10 22:12:22 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:40:03 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	count_min_zero_neg(const char *str, t_vari **vari)
 	{
 		if (str[(*vari)->i + (*vari)->n] != ' ')
 		(*vari)->min = ((*vari)->min * 10)
-			+ (str[(*vari)->i + (*vari)->n] - 48);
+				+ (str[(*vari)->i + (*vari)->n] - 48);
 		(*vari)->n++;
 		if (str[(*vari)->i + (*vari)->n] == '.')
 			(*vari)->have_dot = 1;

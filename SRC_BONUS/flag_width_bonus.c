@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 01:04:27 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/10 23:16:47 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:38:29 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	count_dig_wid_sp(const char *str, t_vari **vari,
 		else
 		{
 			(*vari)->numbers = (*vari)->numbers + 2;
-			count_hexa(types->unsi_long, vari);		
+			count_hexa(types->unsi_long, vari);
 		}
 	}
 }
@@ -49,7 +49,7 @@ void	count_digits_width(const char *str, t_vari **vari,
 	if (str[(*vari)->i] == 'i' || str[(*vari)->i] == 'd')
 	{
 		types->integer = va_arg(print, int);
-		count_int(vari, types->integer);			
+		count_int(vari, types->integer);
 	}
 	else if (str[(*vari)->i] == 'u')
 	{
@@ -64,6 +64,7 @@ void	count_digits_width(const char *str, t_vari **vari,
 	else
 		count_dig_wid_sp(str, vari, print, types);
 }
+
 void	flag_width_continue2(const char *str, t_vari **vari,
 			t_types *types, va_list print)
 {	
@@ -74,12 +75,12 @@ void	flag_width_continue2(const char *str, t_vari **vari,
 		ft_putstr_fd(types->string, 1);
 		(*vari)->amount = (*vari)->amount + ft_strlen(types->string);
 	}
-	else if (str[(*vari)->i] == 'c')	
-		ft_putchar_fd(types->character, 1);	
+	else if (str[(*vari)->i] == 'c')
+		ft_putchar_fd(types->character, 1);
 	else if (str[(*vari)->i] == 'p')
 		width_p(vari, types);
 	else if (str[(*vari)->i] == '.')
-		check_dot(str, vari , print);
+		check_dot(str, vari, print);
 }
 
 void	flag_width_continue(const char *str, t_vari **vari,

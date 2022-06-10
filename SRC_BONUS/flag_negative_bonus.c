@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 21:22:26 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/10 23:24:07 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:31:34 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	flag_negative(const char *str, t_vari **vari,
 		if ((*vari)->min > (*vari)->aux)
 		{
 			if ((*flags)->sharp == 1)
-				(*vari)->aux = (*vari)->aux + 2; 
+				(*vari)->aux = (*vari)->aux + 2;
 			while ((*vari)->aux++ < (*vari)->min)
 			{
 				write(1, " ", 1);

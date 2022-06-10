@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 22:02:57 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/09 03:45:06 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:44:52 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sharp_zero_x(size_t n, int c, t_vari **vari, t_flags *flags)
 {
 	if ((flags)->sharp == 1)
 	{
-		if ((c == 'x') && (n != 0))		
+		if ((c == 'x') && (n != 0))
 			write(1, "0x", 2);
 		else if ((c == 'X') && (n != 0))
 			write(1, "0X", 2);
@@ -46,18 +46,17 @@ void	width_p(t_vari **vari, t_types *types)
 		ft_puthexa_point(types->unsi_long, vari);
 		ft_free_null(&(*vari)->hextab);
 		(*vari)->amount = (*vari)->amount + 2;
-	}
-	
+	}	
 }
 
 void	putstr_dot(t_vari **vari, char *s)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (!s)
 	{
-		if((*vari)->min <= 5)
+		if ((*vari)->min <= 5)
 			write(1, NULL, 1);
 		else
 		{
@@ -72,17 +71,17 @@ void	putstr_dot(t_vari **vari, char *s)
 		{
 			write(1, &s[i], 1);
 			(*vari)->min--;
-			i++;		
+			i++;
 		}
 	}
 }
 
 void	dot_width_s(t_vari **vari, va_list print)
 {
-	int i;
+	int		i;
 	t_types	types;
 
-	ft_bzero(&types, sizeof(t_types));	
+	ft_bzero(&types, sizeof(t_types));
 	i = 0;
 	(*vari)->aux = (*vari)->min_width - (*vari)->min;
 	while ((*vari)->aux > 0)
@@ -97,6 +96,6 @@ void	dot_width_s(t_vari **vari, va_list print)
 	{
 		write(1, &types.string[i], 1);
 		(*vari)->min--;
-		i++;		
+		i++;
 	}
 }

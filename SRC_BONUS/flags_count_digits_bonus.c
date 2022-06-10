@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 23:03:58 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/10 23:24:34 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:43:41 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_id(int n)
 	{
 		print_id(n / 10);
 	}
-	ft_putchar_fd((n % 10) + 48, 1);	
+	ft_putchar_fd((n % 10) + 48, 1);
 }
 
 void	count_int(t_vari **vari, int integer)
