@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 22:24:48 by alachris          #+#    #+#             */
-/*   Updated: 2022/05/30 22:08:16 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:23:23 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_percent_p(t_vari **vari, va_list print)
 	{
 		write(1, "0x", 2);
 		ft_puthexa_point(types.unsi_long, vari);
+		ft_free_null(&(*vari)->hextab);
 		(*vari)->amount = (*vari)->amount + 2;
 	}
 }
@@ -46,6 +47,7 @@ void	no_flags2(const char *str, t_vari **vari, va_list print)
 	{
 		types.unsi_int = va_arg(print, unsigned int);
 		ft_puthexa(types.unsi_int, str[(*vari)->i], vari);
+		ft_free_null(&(*vari)->hextab);
 	}
 	else if (str[(*vari)->i] == 'p')
 		ft_percent_p(vari, print);

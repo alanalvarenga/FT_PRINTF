@@ -8,12 +8,14 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 PATH_SRC = ./SRC/
 PATH_SRC_BONUS = ./SRC_BONUS/
-FILES = $(PATH_SRC)ft_printf.c $(PATH_SRC)ft_printf_utils.c
+FILES = $(PATH_SRC)ft_printf.c $(PATH_SRC)ft_printf_utils.c $(PATH_SRC)ft_printf_utils2.c
 OBJECTS = $(FILES:.c=.o)
 FILES_BONUS = $(PATH_SRC_BONUS)ft_printf_bonus.c $(PATH_SRC_BONUS)ft_printf_utils_bonus.c \
-			  $(PATH_SRC_BONUS)ft_flags_bonus.c $(PATH_SRC_BONUS)flag_space.c $(PATH_SRC_BONUS)flag_negative.c \
-			  $(PATH_SRC_BONUS)flag_zero.c $(PATH_SRC_BONUS)flags_count_digits.c $(PATH_SRC_BONUS)flag_sharp.c \
-			  $(PATH_SRC_BONUS)flag_width.c $(PATH_SRC_BONUS)ft_print_utils2_bonus.c
+			  $(PATH_SRC_BONUS)ft_flags_bonus.c $(PATH_SRC_BONUS)flag_space_bonus.c \
+			  $(PATH_SRC_BONUS)flag_negative_bonus.c $(PATH_SRC_BONUS)flag_zero_bonus.c \
+			  $(PATH_SRC_BONUS)flags_count_digits_bonus.c $(PATH_SRC_BONUS)flag_sharp_bonus.c \
+			  $(PATH_SRC_BONUS)flag_width_bonus.c $(PATH_SRC_BONUS)ft_print_utils2_bonus.c \
+			  $(PATH_SRC_BONUS)flag_dot_bonus.c  $(PATH_SRC_BONUS)ft_print_utils3_bonus.c
 OBJECTS_BONUS = $(FILES_BONUS:.c=.o)
 RM = rm -f
 

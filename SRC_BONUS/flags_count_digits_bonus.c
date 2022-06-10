@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flags_count_digits.c                               :+:      :+:    :+:   */
+/*   flags_count_digits_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 23:03:58 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/08 02:01:06 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:24:34 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,11 @@ void	count_hexa(size_t n, t_vari **vari)
 {
 	if (n < 16)
 	{		
-		(*vari)->numbers += 1;
+		(*vari)->numbers++;
 	}
 	else
 	{
 		count_hexa(n / 16, vari);
-		(*vari)->numbers += 1;
+		(*vari)->numbers++;
 	}
 }

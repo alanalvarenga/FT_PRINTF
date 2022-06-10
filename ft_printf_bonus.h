@@ -6,21 +6,16 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:24:21 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/08 02:05:22 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:02:04 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_BONUS_H
 # define FT_PRINTF_BONUS_H
 
-# define HEXTAB_UP "0123456789ABCDEF"
-# define HEXTAB_DOWN "0123456789abcdef"
-
 # include <stdarg.h>
 # include "./Libft/libft.h"
 # include <stdio.h>
-
-
 
 typedef struct s_vari
 {
@@ -33,6 +28,8 @@ typedef struct s_vari
 	int	numbers;
 	int	is_negative;
 	char	*hextab;
+	int	min_width;
+	int	have_dot;
 }	t_vari;
 
 typedef struct s_types
@@ -104,6 +101,25 @@ void	sharp_zero_x(size_t n, int c, t_vari **vari, t_flags *flags);
 void	count_dig_wid_sp(const char *str, t_vari **vari,
 			va_list print, t_types *types);
 void	flag_width_continue2(const char *str, t_vari **vari,
-			va_list print, t_types *types);
+			t_types *types, va_list print);
+void	width_p(t_vari **vari, t_types *types);
+void	flag_dot(const char *str, t_vari **vari,
+			va_list print, t_flags **flags);
+void	check_dot(const char *str, t_vari **vari, va_list print);
+void	do_dot(const char *str, t_vari **vari,
+			va_list print, t_flags *flags);
+void	putstr_dot(t_vari **vari, char *s);
+void	dot_width_s(t_vari **vari, va_list print);
+void	dot_comb_id(const char *str, t_vari **vari,
+			va_list print, t_flags **flags);
+void	putid_dot(const char *str, t_vari **vari,
+			va_list print, t_flags *flags);
+void	jump_dot(const char *str, t_vari **vari);
+void	putu_dot(const char *str, t_vari **vari,
+			va_list print, t_flags *flags);
+void	do_dot_sharp(const char *str, t_vari **vari,
+			va_list print, t_flags *flags);
+void	putx_dot(const char *str, t_vari **vari,
+			va_list print, t_flags *flags);
 
 #endif

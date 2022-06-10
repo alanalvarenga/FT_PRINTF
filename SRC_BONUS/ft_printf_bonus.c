@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:26:26 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/08 01:13:42 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/08 22:42:15 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,10 @@ void	verify(const char *str, t_vari *vari, va_list print)
 		vari->amount++;
 	}
 	else
+	{
+		vari->n = 0;
 		is_flag(str, &vari, print);
+	}
 }
 
 int	ft_printf(const char *str, ...)

@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 22:24:53 by alachris          #+#    #+#             */
-/*   Updated: 2022/05/26 20:17:40 by alachris         ###   ########.fr       */
+/*   Updated: 2022/06/10 23:22:20 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,39 +57,36 @@ void	ft_putnbr_unsi_fd(unsigned int n, int fd)
 
 void	ft_puthexa(unsigned long n, int c, t_vari **vari)
 {
-	char	*hextab;
-
-	if (c == 'x')
-		hextab = "0123456789abcdef";
-	else if (c == 'X')
-		hextab = "0123456789ABCDEF";
+	if ((c == 'x') && (!(*vari)->hextab))
+		(*vari)->hextab = ft_strdup("0123456789abcdef");
+	else if ((c == 'X') && (!(*vari)->hextab))
+		(*vari)->hextab = ft_strdup("0123456789ABCDEF");
 	if (n < 16)
 	{
-		ft_putchar_fd(hextab[n], 1);
+		ft_putchar_fd((*vari)->hextab[n], 1);
 		(*vari)->amount++;
 	}
 	else
 	{
 		ft_puthexa(n / 16, c, vari);
-		ft_putchar_fd(hextab[n % 16], 1);
+		ft_putchar_fd((*vari)->hextab[n % 16], 1);
 		(*vari)->amount++;
 	}
 }
 
 void	ft_puthexa_point(unsigned long n, t_vari **vari)
 {
-	char	*hextab;
-
-	hextab = "0123456789abcdef";
+	if (!(*vari)->hextab)
+		(*vari)->hextab = ft_strdup("0123456789abcdef");
 	if (n < 16)
 	{
-		ft_putchar_fd(hextab[n], 1);
+		ft_putchar_fd((*vari)->hextab[n], 1);
 		(*vari)->amount++;
 	}
 	else
 	{
 		ft_puthexa_point(n / 16, vari);
-		ft_putchar_fd(hextab[n % 16], 1);
+		ft_putchar_fd((*vari)->hextab[n % 16], 1);
 		(*vari)->amount++;
 	}
 }
