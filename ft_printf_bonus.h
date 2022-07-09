@@ -6,7 +6,7 @@
 /*   By: alachris <alachris@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 21:24:21 by alachris          #+#    #+#             */
-/*   Updated: 2022/06/10 23:45:50 by alachris         ###   ########.fr       */
+/*   Updated: 2022/07/09 20:13:19 by alachris         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include "./Libft/libft.h"
-# include <stdio.h>
 
 typedef struct s_vari
 {
